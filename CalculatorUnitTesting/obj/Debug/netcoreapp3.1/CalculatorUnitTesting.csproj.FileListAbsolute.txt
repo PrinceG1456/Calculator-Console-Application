@@ -1,0 +1,4 @@
+F:\Problem Statement\Calculator Console Application\CalculatorUnitTesting\bin\Debug\netcoreapp3.1\CalculatorConsoleApplication.dll
+F:\Problem Statement\Calculator Console Application\CalculatorUnitTesting\obj\Debug\netcoreapp3.1\CalculatorUnitTesting.AssemblyInfoInputs.cache
+F:\Problem Statement\Calculator Console Application\CalculatorUnitTesting\obj\Debug\netcoreapp3.1\CalculatorUnitTesting.AssemblyInfo.cs
+F:\Problem Statement\Calculator Console Application\CalculatorUnitTesting\obj\Debug\netcoreapp3.1\CalculatorUnitTesting.csprojAssemblyReference.cache
