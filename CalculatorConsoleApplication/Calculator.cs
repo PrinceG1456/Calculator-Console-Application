@@ -13,6 +13,7 @@ namespace CalculatorConsoleApplication
         {
             methods.Add("sum", Sum);
             methods.Add("add", Sum);
+            methods.Add("multiply", Multiply);
         }
 
         public static void Calculate(string[] args)
@@ -105,6 +106,16 @@ namespace CalculatorConsoleApplication
                 sum += val > 1000 ? 0 : val;
             }
             return sum;
+        }
+
+        private static int Multiply(IEnumerable<int> enumerable)
+        {
+            int mul = 1;
+            foreach (int val in enumerable)
+            {
+                mul *= val > 1000 ? 1 : val;
+            }
+            return mul;
         }
     }
 }

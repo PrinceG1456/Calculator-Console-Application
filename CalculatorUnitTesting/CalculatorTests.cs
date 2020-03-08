@@ -152,5 +152,114 @@ namespace CalculatorUnitTesting
 
         }
 
+        [Test]
+        public void CalculateMultiply_ParamsWithTwoNumbers_ReturnsItsMultiplication()
+        {
+            string consoleOutput = null;
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+
+                //All console outputs goes here
+                Calculator.Calculate(new string[] { "multiply", "2,3" });
+
+                consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
+            }
+
+            Assert.AreEqual("6", consoleOutput);
+
+        }
+
+
+        [Test]
+        public void CalculateMultiply_NParams_ReturnsMultiplicatioinOfN()
+        {
+            string consoleOutput = null;
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+
+                //All console outputs goes here
+                Calculator.Calculate(new string[] { "multiply", "4,7,3,4" });
+
+                consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
+            }
+
+            Assert.AreEqual("336", consoleOutput);
+
+        }
+
+        [Test]
+        public void CalculateMultiply_ParamsWithNewlineSeparator_ReturnsMultiplicatonOfN()
+        {
+            string consoleOutput = null;
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+
+                //All console outputs goes here
+                Calculator.Calculate(new string[] { "multiply", "2\n3,4" });
+
+                consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
+            }
+
+            Assert.AreEqual("24", consoleOutput);
+
+        }
+
+        [Test]
+        public void CalculateMultiply_ParamsWithDelimiters_ReturnsMultiplication()
+        {
+            string consoleOutput = null;
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+
+                //All console outputs goes here
+                Calculator.Calculate(new string[] { "multiply", "\\;\\3;4;5" });
+
+                consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
+            }
+
+            Assert.AreEqual("60", consoleOutput);
+
+        }
+
+        [Test]
+        public void CalculateMultiply_ParamsWithNegativeNumbers_ReturnsErrorWithTheNegativeNumbers()
+        {
+            string consoleOutput = null;
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+
+                //All console outputs goes here
+                Calculator.Calculate(new string[] { "multiply", "\\,\\2,7,-3,5,-2" });
+
+                consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
+            }
+
+            Assert.AreEqual("Negative numbers [-3,-2] not allowed.", consoleOutput);
+
+        }
+
+        [Test]
+        public void CalculateMultiply_ParamsWithNumbersAbove1000_ReturnsMultiplicationValueSkippingTheNumbersAbove1000()
+        {
+            string consoleOutput = null;
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+
+                //All console outputs goes here
+                Calculator.Calculate(new string[] { "multiply", "10,20,1010,20" });
+
+                consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
+            }
+
+            Assert.AreEqual("4000", consoleOutput);
+
+        }
+
     }
 }
