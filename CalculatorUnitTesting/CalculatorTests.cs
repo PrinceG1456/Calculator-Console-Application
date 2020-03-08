@@ -98,5 +98,23 @@ namespace CalculatorUnitTesting
 
         }
 
+        [Test]
+        public void CalculateAdd_ParamsWithDelimiters_ReturnsTheSum()
+        {
+            string consoleOutput = null;
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+
+                //All console outputs goes here
+                Calculator.Calculate(new string[] { "add", "\\;\\3;4;5" });
+
+                consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
+            }
+
+            Assert.AreEqual("12", consoleOutput);
+
+        }
+
     }
 }

@@ -7,6 +7,7 @@ namespace CalculatorConsoleApplication
     public static class Calculator
     {
         private static Dictionary<string, Func<IEnumerable<int>, int>> methods = new Dictionary<string, Func<IEnumerable<int>, int>>();
+        private static List<Char> delimiters = new List<Char> { ',', '\n' };
 
         static Calculator()
         {
@@ -41,7 +42,39 @@ namespace CalculatorConsoleApplication
         private static IEnumerable<int> SanitizeInput(string input)
         {
             string str = input.Replace(@"\n", "\n"); // To replace \\n with \n
+            str = checkForDelimiter(str);
             return StringToIntList(str);
+        }
+
+        private static string checkForDelimiter(string input)
+        {
+            String[] strArray = input.Split("\\", StringSplitOptions.RemoveEmptyEntries);
+            if (strArray.Length == 1)
+                return strArray[0];
+            try
+            {
+                delimiters.Add(Convert.ToChar(strArray[0]));
+                return strArray[1];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Problem with the provided delimiter");
+            }
+
+            return null;
+        }
+
+        private static IEnumerable<int> StringToIntList(string str)
+        {
+            if (String.IsNullOrEmpty(str))
+                yield break;
+
+            foreach (var s in str.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries))
+            {
+                int num;
+                if (int.TryParse(s, out num))
+                    yield return num;
+            }
         }
 
         private static int Sum(IEnumerable<int> enumerable)
@@ -52,19 +85,6 @@ namespace CalculatorConsoleApplication
                 sum += val;
             }
             return sum;
-        }
-
-        private static IEnumerable<int> StringToIntList(string str)
-        {
-            if (String.IsNullOrEmpty(str))
-                yield break;
-
-            foreach (var s in str.Split(new Char[] { ',', '\n' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                int num;
-                if (int.TryParse(s, out num))
-                    yield return num;
-            }
         }
     }
 }
