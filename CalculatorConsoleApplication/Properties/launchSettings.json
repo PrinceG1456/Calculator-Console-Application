@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CalculatorConsoleApplication": {
+      "commandName": "Project",
+      "commandLineArgs": "sum 2,3"
+    }
+  }
+}
