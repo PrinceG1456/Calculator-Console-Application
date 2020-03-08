@@ -62,5 +62,23 @@ namespace CalculatorUnitTesting
 
         }
 
+        [Test]
+        public void CalculateSum_NParams_ReturnsTheSumOfN()
+        {
+            string consoleOutput = null;
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+
+                //All console outputs goes here
+                Calculator.Calculate(new string[] { "sum", "4,7,3,4,7,3,5,6,7,4,3,2,5,7,5,3,4,6,7,8,9,5,5,5,4,3,2" });
+
+                consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
+            }
+
+            Assert.AreEqual("133", consoleOutput);
+
+        }
+
     }
 }

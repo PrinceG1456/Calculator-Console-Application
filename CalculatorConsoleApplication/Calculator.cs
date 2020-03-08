@@ -11,6 +11,7 @@ namespace CalculatorConsoleApplication
         static Calculator()
         {
             methods.Add("sum", Sum);
+            methods.Add("add", Sum);
         }
 
         public static void Calculate(string[] args)
