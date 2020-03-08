@@ -80,5 +80,23 @@ namespace CalculatorUnitTesting
 
         }
 
+        [Test]
+        public void CalculateAdd_ParamsWithNewlineSeparator_ReturnsTheSumOfN()
+        {
+            string consoleOutput = null;
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+
+                //All console outputs goes here
+                Calculator.Calculate(new string[] { "add", "2\n3,4" });
+
+                consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
+            }
+
+            Assert.AreEqual("9", consoleOutput);
+
+        }
+
     }
 }
