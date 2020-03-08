@@ -41,7 +41,7 @@ namespace CalculatorConsoleApplication
                 return methods[args[0].ToLower()](val).ToString();
             }
 
-            return null;
+            return "Not defined";
         }
 
         private static List<int> HasNegativeNumers(IEnumerable<int> val)
