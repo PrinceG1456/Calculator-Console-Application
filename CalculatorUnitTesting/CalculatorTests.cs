@@ -134,5 +134,23 @@ namespace CalculatorUnitTesting
 
         }
 
+        [Test]
+        public void CalculateAdd_ParamsWithNumbersAbove1000_ReturnsSumSkippingTheNumbersAbove1000()
+        {
+            string consoleOutput = null;
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+
+                //All console outputs goes here
+                Calculator.Calculate(new string[] { "add", "10,20,1010,20" });
+
+                consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
+            }
+
+            Assert.AreEqual("50", consoleOutput);
+
+        }
+
     }
 }

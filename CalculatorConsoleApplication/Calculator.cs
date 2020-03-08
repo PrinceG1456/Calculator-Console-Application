@@ -43,7 +43,7 @@ namespace CalculatorConsoleApplication
                 return;
             }
 
-           
+
         }
 
         private static List<int> HasNegativeNumers(IEnumerable<int> val)
@@ -102,7 +102,7 @@ namespace CalculatorConsoleApplication
             int sum = 0;
             foreach (int val in enumerable)
             {
-                sum += val;
+                sum += val > 1000 ? 0 : val;
             }
             return sum;
         }
