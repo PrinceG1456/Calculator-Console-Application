@@ -16,18 +16,16 @@ namespace CalculatorConsoleApplication
             methods.Add("multiply", Multiply);
         }
 
-        public static void Calculate(string[] args)
+        public static string Calculate(string[] args)
         {
             if (args.Length == 0)
             {
-                Console.WriteLine("No inputs provided.");
-                return;
+                return "No inputs provided."; ;
             }
 
             if (args.Length == 1)
             {
-                Console.WriteLine("0");
-                return;
+                return "0";
             }
 
             if (args.Length == 2)
@@ -37,14 +35,13 @@ namespace CalculatorConsoleApplication
 
                 if (negativeNumerList.Count > 0)
                 {
-                    Console.WriteLine("Negative numbers [" + String.Join(",", negativeNumerList) + "] not allowed.");
-                    return;
+                    
+                    return "Negative numbers [" + String.Join(",", negativeNumerList) + "] not allowed."; ;
                 }
-                Console.WriteLine(methods[args[0].ToLower()](val));
-                return;
+                return methods[args[0].ToLower()](val).ToString();
             }
 
-
+            return null;
         }
 
         private static List<int> HasNegativeNumers(IEnumerable<int> val)
@@ -79,10 +76,8 @@ namespace CalculatorConsoleApplication
             }
             catch (Exception e)
             {
-                Console.WriteLine("Problem with the provided delimiter");
+                return "Problem with the provided delimiter";
             }
-
-            return null;
         }
 
         private static IEnumerable<int> StringToIntList(string str)

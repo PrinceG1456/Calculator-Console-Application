@@ -6,7 +6,7 @@ namespace CalculatorConsoleApplication
     {
         static void Main(string[] args)
         {
-            Calculator.Calculate(args);
+            Console.WriteLine(Calculator.Calculate(args));
             return;
         }
     }
