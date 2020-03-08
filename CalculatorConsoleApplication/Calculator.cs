@@ -32,11 +32,30 @@ namespace CalculatorConsoleApplication
             if (args.Length == 2)
             {
                 var val = SanitizeInput(args[1]);
+                if (HasNegativeNumers(val))
+                {
+                    Console.WriteLine("Negative numbers not allowed.");
+                    return;
+                }
                 Console.WriteLine(methods[args[0].ToLower()](val));
                 return;
             }
 
            
+        }
+
+        private static bool HasNegativeNumers(IEnumerable<int> val)
+        {
+            bool hasNegative = false;
+            foreach (var v in val)
+            {
+                if (v < 0)
+                {
+                    hasNegative = true;
+                    break;
+                }
+            }
+            return hasNegative;
         }
 
         private static IEnumerable<int> SanitizeInput(string input)

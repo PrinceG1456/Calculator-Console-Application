@@ -116,5 +116,23 @@ namespace CalculatorUnitTesting
 
         }
 
+        [Test]
+        public void CalculateAdd_ParamsWithNegativeNumbers_ReturnsErrorWithTheNegativeNumbers()
+        {
+            string consoleOutput = null;
+            using (StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+
+                //All console outputs goes here
+                Calculator.Calculate(new string[] { "add", "\\,\\2,7,-3,5,-2" });
+
+                consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
+            }
+
+            Assert.AreEqual("Negative numbers not allowed.", consoleOutput);
+
+        }
+
     }
 }

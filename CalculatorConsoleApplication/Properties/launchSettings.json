@@ -2,7 +2,7 @@
   "profiles": {
     "CalculatorConsoleApplication": {
       "commandName": "Project",
-      "commandLineArgs": "add \\\\;\\\\3;4;5"
+      "commandLineArgs": "add \\\\,\\\\2,7,-3,5,-2"
     }
   }
 }
