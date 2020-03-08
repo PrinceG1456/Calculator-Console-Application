@@ -130,7 +130,7 @@ namespace CalculatorUnitTesting
                 consoleOutput = stringWriter.ToString().Replace(System.Environment.NewLine, string.Empty);
             }
 
-            Assert.AreEqual("Negative numbers not allowed.", consoleOutput);
+            Assert.AreEqual("Negative numbers [-3,-2] not allowed.", consoleOutput);
 
         }
 

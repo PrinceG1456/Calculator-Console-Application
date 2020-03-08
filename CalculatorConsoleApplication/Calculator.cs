@@ -32,9 +32,11 @@ namespace CalculatorConsoleApplication
             if (args.Length == 2)
             {
                 var val = SanitizeInput(args[1]);
-                if (HasNegativeNumers(val))
+                List<int> negativeNumerList = HasNegativeNumers(val);
+
+                if (negativeNumerList.Count > 0)
                 {
-                    Console.WriteLine("Negative numbers not allowed.");
+                    Console.WriteLine("Negative numbers [" + String.Join(",", negativeNumerList) + "] not allowed.");
                     return;
                 }
                 Console.WriteLine(methods[args[0].ToLower()](val));
@@ -44,18 +46,17 @@ namespace CalculatorConsoleApplication
            
         }
 
-        private static bool HasNegativeNumers(IEnumerable<int> val)
+        private static List<int> HasNegativeNumers(IEnumerable<int> val)
         {
-            bool hasNegative = false;
+            List<int> list = new List<int>();
             foreach (var v in val)
             {
                 if (v < 0)
                 {
-                    hasNegative = true;
-                    break;
+                    list.Add(v);
                 }
             }
-            return hasNegative;
+            return list;
         }
 
         private static IEnumerable<int> SanitizeInput(string input)
